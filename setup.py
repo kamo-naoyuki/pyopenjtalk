@@ -14,6 +14,10 @@ from os.path import join
 
 version = '0.0.2'
 
+cwd = os.path.dirname(os.path.abspath(__file__))
+if cwd != "":
+    os.chdir(cwd)
+
 openjtalk_install_prefix = os.environ.get(
     "OPEN_JTALK_INSTALL_PREFIX", "/usr/local/")
 
@@ -67,7 +71,6 @@ ext_modules = cythonize(
 )
 
 # Adapted from https://github.com/pytorch/pytorch
-cwd = os.path.dirname(os.path.abspath(__file__))
 if os.getenv('PYOPENJTALK_BUILD_VERSION'):
     version = os.getenv('PYOPENJTALK_BUILD_VERSION')
 else:
